@@ -1,0 +1,92 @@
+Here's the HTML and CSS code for the card design based on the provided details:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cogsmith's Toolbox Card</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .card {
+            max-width: 300px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #808080;
+            color: #fff;
+            padding: 16px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 16px;
+            text-align: center;
+        }
+
+        .card-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 16px;
+        }
+
+        .card-type {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 16px;
+        }
+
+        .card-description {
+            text-align: justify;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .card-flavor {
+            font-style: italic;
+            color: #777;
+            margin-bottom: 16px;
+        }
+
+        .card-interactions {
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            Cogsmith's Toolbox
+        </div>
+        <div class="card-body">
+            <img class="card-image" src="https://images.unsplash.com/photo-1558906050-d6d6aa390fd3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NTQ4Mzd8MHwxfHNlYXJjaHwxfHx0b29sYm94fGVufDB8fHx8MTc1MTYxMzUwOHww&ixlib=rb-4.1.0&q=80&w=1080" alt="Cogsmith's Toolbox">
+            <h2 class="card-title">Cogsmith's Toolbox</h2>
+            <p class="card-type">Item</p>
+            <p class="card-description">A collection of tools and spare parts useful for repairing or upgrading automatons. Allows for the temporary increase of a friendly Character card's rank by one.</p>
+            <p class="card-flavor">"Every cog counts."</p>
+            <p class="card-interactions">Interactions: Supports Character card abilities.</

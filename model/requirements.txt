@@ -1,0 +1,26 @@
+# === Web framework ===
+fastapi
+uvicorn
+
+# === Templating & Data ===
+jinja2
+pandas
+python-dotenv
+
+# === API Clients ===
+requests
+httpx  # Optional: async HTTP client
+
+# === PDF Rendering (choose one) ===
+weasyprint  # For local HTML → PDF generation
+# OR use remote PDF API like html2pdf.app or pdfshift.io
+
+# === ML & LLM API Support ===
+torch              # PyTorch (required for running models locally)
+transformers       # Hugging Face Transformers
+sentencepiece      # For tokenizer support
+accelerate         # Optional for fast model loading
+huggingface-hub    # Interact with HF models/repos
+
+# === Optional Dev Tools ===
+python-multipart   # For file uploads

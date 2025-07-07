@@ -1,0 +1,90 @@
+Here's the HTML and CSS code for the card design based on the provided details:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Design</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Gothic', sans-serif;
+        }
+
+        .card {
+            position: relative;
+            width: 300px;
+            height: 450px;
+            background-color: #D2691E;
+            background-image: url("https://images.unsplash.com/photo-1546776230-bb86256870ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NTQ4Mzd8MHwxfHNlYXJjaHwxfHxhdXRvbWF0b25zfGVufDB8fHx8MTc1MTYxMzUwN3ww&ixlib=rb-4.1.0&q=80&w=1080");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #A0522D;
+            opacity: 0.3;
+        }
+
+        .card-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 1;
+        }
+
+        .card-name {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .card-type, .card-rarity {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card-description {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .card-flavor-text {
+            font-size: 14px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-content">
+            <h1 class="card-name">The Grand Automaton Uprising</h1>
+            <p class="card-type">Event</p>
+            <p class="card-rarity">Rare</p>
+            <p class="card-description">A sudden rebellion of automatons throws the city into chaos. All Character cards lose one rank temporarily. This event can significantly disrupt opponents' strategies.</p>
+            <p class="card-flavor-text">The gears grind.</p>
+        </div>
+    </div>
+</body>
+</html>
+```
+
+This code creates a single card with a background image, rounded corners, a shadow effect, and centered text. The text

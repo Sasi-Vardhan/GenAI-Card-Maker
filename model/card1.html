@@ -1,0 +1,90 @@
+Here's the HTML and CSS code for the card design based on the given details:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aetherium Infusion Card</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'fantasy', serif;
+            background-color: #ADD8E6;
+        }
+        
+        .card {
+            max-width: 300px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.25);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to right, #008080, #ADD8E6);
+            transform: translateX(-90%) translateY(0%) rotate(45deg);
+            opacity: 0.15;
+        }
+        
+        .card-header {
+            text-align: center;
+        }
+        
+        .card-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+        }
+        
+        .card-body {
+            text-align: center;
+        }
+        
+        .card-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #008080;
+            margin-bottom: 10px;
+        }
+        
+        .card-type, .card-rarity {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .card-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .card-flavor-text {
+            font-style: italic;
+            font-size: 18px;
+            color: #008080;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <img class="card-image" src="https://images.unsplash.com/photo-1614934273038-8829c68de36c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NTQ4Mzd8MHwxfHNlYXJjaHwxfHx2aWFsfGVufDB8fHx8MTc1MTYxMzUwNnww&ixlib=rb-4.1.0&q=80&w=1080" alt="Aetherium Infusion">
+        </div>
+        <div class="card-body">
+            <h2 class="card-name">Aetherium Infusion</h2>
+            <p class="card-type">Item</p>
+            <p class="card-rarity">Uncommon</p>
+            <p class="card-description">A potent alchemic concoction that temporarily boosts a character's power. Increases the

@@ -1,0 +1,88 @@
+Here's a clean HTML and CSS code for a single card design based on the provided details:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Slicer Card</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .card {
+            max-width: 300px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 20px;
+            background-color: #FF00FF;
+            color: #fff;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 24px;
+        }
+
+        .card-type {
+            margin-bottom: 10px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .card-description {
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .card-flavor {
+            margin-top: 20px;
+            color: #0000FF;
+            font-weight: bold;
+        }
+
+        /* Tech font style */
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+        .tech {
+            font-family: 'Share Tech Mono', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header tech">
+            <h2>Neon Slicer</h2>
+            <p class="card-type">Character - Uncommon</p>
+        </div>
+        <div class="card-body">
+            <img src="https://images.unsplash.com/photo-1590099929583-3eb238d20dac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NTQ4Mzd8MHwxfHNlYXJjaHwxfHxuZW9uJTIwc2t5bGluZXxlbnwwfHx8fDE3NTE2MTM1MDd8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Neon Slicer" class="card-image">
+            <h3 class="card-title">Neon Slicer</h3>
+            <p class="card-description">A swift and deadly assassin from the Neon Syndicate. Their cybernetic enhancements grant them incredible speed and agility. Difficult to defeat in direct combat.</p>
+            <p class="card-flavor">In neon, we trust.</p>
+        </div>
+    </div>
