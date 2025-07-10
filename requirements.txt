@@ -1,0 +1,8 @@
+streamlit
+jinja2
+weasyprint
+PyPDF2
+requests
+pillow
+cohere
+google-generativeai
