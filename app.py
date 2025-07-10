@@ -6,7 +6,6 @@ from cardCreation import imageUrlAdd as imgAdd
 from support import JsonstringToJson as js
 from cardCreation import Html_Code_GEN as htmG
 from jinja2 import Environment, FileSystemLoader
-from weasyprint import HTML, CSS
 from tempfile import NamedTemporaryFile
 from PyPDF2 import PdfMerger
 
