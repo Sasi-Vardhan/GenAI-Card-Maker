@@ -20,26 +20,78 @@ FINAL_PDF = os.path.join(OUTPUT_DIR, "combined_output.pdf")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
+from fpdf import FPDF
+from bs4 import BeautifulSoup
+import requests
+from PIL import Image
+from io import BytesIO
+import os
+from jinja2 import Environment, FileSystemLoader
+
+TEMPLATE_DIR = "templates"
+OUTPUT_DIR = "output_pdfs"
+FINAL_PDF = os.path.join(OUTPUT_DIR, "combined_output.pdf")
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
 def generate_single_pdf():
     pdf = FPDF(format='A4')
     pdf.set_auto_page_break(auto=True, margin=15)
+
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
 
     for file_name in sorted(os.listdir(TEMPLATE_DIR)):
         if file_name.endswith(".html"):
             template = env.get_template(file_name)
             rendered_html = template.render()
-
-            # Strip HTML tags and get plain text
             soup = BeautifulSoup(rendered_html, "html.parser")
-            text_content = soup.get_text(separator="\n")
 
-            # Add new page and text
+            # Extract card content
+            title = soup.find("h1") or soup.find("h2")
+            paragraphs = soup.find_all("p")
+            image_tag = soup.find("img")
+
             pdf.add_page()
-            pdf.set_font("Arial", size=12)
-            for line in text_content.split("\n"):
-                if line.strip():
-                    pdf.multi_cell(0, 10, txt=line.strip())
+
+            # Title
+            if title:
+                pdf.set_font("Helvetica", style="B", size=16)
+                pdf.multi_cell(0, 10, title.get_text(strip=True), align="C")
+                pdf.ln(5)
+
+            # Image
+            if image_tag and image_tag.get("src"):
+                img_url = image_tag["src"]
+                try:
+                    response = requests.get(img_url)
+                    img = Image.open(BytesIO(response.content)).convert("RGB")
+                    img_buffer = BytesIO()
+                    img.save(img_buffer, format="JPEG")
+                    img_buffer.seek(0)
+
+                    # Resize image to fit max width
+                    page_width = 180  # mm
+                    img_width = img.width * 0.264583  # px to mm
+                    img_height = img.height * 0.264583
+                    if img_width > page_width:
+                        scale = page_width / img_width
+                        img_width *= scale
+                        img_height *= scale
+
+                    x_center = (210 - img_width) / 2  # A4 width is 210mm
+                    pdf.image(img_buffer, x=x_center, y=pdf.get_y(), w=img_width)
+                    pdf.ln(img_height + 5)
+                except Exception as e:
+                    pdf.set_font("Helvetica", size=10)
+                    pdf.multi_cell(0, 10, f"[Image failed to load: {img_url}]", align="C")
+                    pdf.ln(5)
+
+            # Description
+            pdf.set_font("Helvetica", size=12)
+            for para in paragraphs:
+                text = para.get_text(strip=True)
+                if text:
+                    pdf.multi_cell(0, 10, text)
+                    pdf.ln(2)
 
     pdf.output(FINAL_PDF)
     return FINAL_PDF
