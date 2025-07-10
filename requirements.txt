@@ -6,3 +6,5 @@ requests
 pillow
 cohere
 google-generativeai
+fpdf
+beautifulsoup4
