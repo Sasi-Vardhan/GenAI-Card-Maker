@@ -10,6 +10,11 @@ from weasyprint import HTML, CSS
 from tempfile import NamedTemporaryFile
 from PyPDF2 import PdfMerger
 
+
+from fpdf import FPDF
+from bs4 import BeautifulSoup
+
+
 TEMPLATE_DIR = "templates"
 OUTPUT_DIR = "output_pdfs"
 FINAL_PDF = os.path.join(OUTPUT_DIR, "combined_output.pdf")
@@ -17,28 +22,29 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
 def generate_single_pdf():
+    pdf = FPDF(format='A4')
+    pdf.set_auto_page_break(auto=True, margin=15)
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
-    temp_pdf_paths = []
 
     for file_name in sorted(os.listdir(TEMPLATE_DIR)):
         if file_name.endswith(".html"):
             template = env.get_template(file_name)
             rendered_html = template.render()
 
-            temp_pdf = NamedTemporaryFile(delete=False, suffix=".pdf")
-            HTML(string=rendered_html).write_pdf(
-                temp_pdf.name, stylesheets=[CSS(string="@page { size: A4; margin: 1in; }")]
-            )
-            temp_pdf_paths.append(temp_pdf.name)
+            # Strip HTML tags and get plain text
+            soup = BeautifulSoup(rendered_html, "html.parser")
+            text_content = soup.get_text(separator="\n")
 
-    merger = PdfMerger()
-    for pdf_path in temp_pdf_paths:
-        merger.append(pdf_path)
+            # Add new page and text
+            pdf.add_page()
+            pdf.set_font("Arial", size=12)
+            for line in text_content.split("\n"):
+                if line.strip():
+                    pdf.multi_cell(0, 10, txt=line.strip())
 
-    merger.write(FINAL_PDF)
-    merger.close()
-
+    pdf.output(FINAL_PDF)
     return FINAL_PDF
+
 
 
 def main():
